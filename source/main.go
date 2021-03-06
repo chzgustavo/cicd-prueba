@@ -27,7 +27,7 @@ func handler(w http.ResponseWriter, r *http.Request){
 	}
 	fmt.Fprintf(w, "Hola Mundo!\n")
 	fmt.Fprintf(w, "Version: 1.0.0\n")
-	resp := fmt.Sprintf("Hello from %s", host)
+	resp := fmt.Sprintf("Hello from %s\n", host)
 	_, err = w.Write([]byte(resp))
 	if err != nil {
 		log.Panicf("not able to write http output: %s", err)
