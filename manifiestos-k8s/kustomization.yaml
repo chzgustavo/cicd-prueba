@@ -8,4 +8,4 @@ namespace: prueba-create
 images:
 - name: gcr.io/google-samples/hello-app:2.0
   newName: chzgustavo/hello-gitops
-  newTag: 45883fd56389d504bfabc5c19696f4e40966b139
+  newTag: 69aa9cbcbd0afb96a1dac15a1eac3f1a05ab33ee
