@@ -6,11 +6,11 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Continuos Integration
     runs-on: ubuntu-18.04
     
     steps:
-    - name: Set up Go 1.x
+    - name: Setting up Golang v1.14
       uses: actions/setup-go@v2
       with:
         go-version: ^1.14
@@ -18,11 +18,11 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Test
+    - name: Testing
       run: |
         CGO_ENABLED=0 go test ./...
         
-    - name: Build and push Docker image
+    - name: Create and send a Docker image to the docker registry
       uses: docker/build-push-action@v1.1.0
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -31,7 +31,7 @@ jobs:
         tags: ${{ github.sha }}, latest
 
   deploy:
-    name: Deploy
+    name: Continuos Delivery
     runs-on: ubuntu-latest
     needs: build
 
@@ -39,12 +39,12 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Setup Kustomize
+    - name: Kustomize configuration
       uses: imranismail/setup-kustomize@v1
       with:
         kustomize-version: "3.6.1"
 
-    - name: Update Kubernetes resources
+    - name: Update kubernetes resource
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       run: |
@@ -57,7 +57,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -am "Actualizacion de imagen"
-    - name: Push changes
+    - name: Applying change in main branch
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
