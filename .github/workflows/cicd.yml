@@ -27,6 +27,7 @@ jobs:
   tryvy:
     name: Build and scan
     runs-on: ubuntu-latest
+    needs: lint
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -55,7 +56,7 @@ jobs:
   build:
     name: Continuos Integration
     runs-on: ubuntu-18.04
-    
+    needs: [lint, tryvy]
     steps:
       - name: Setting up Golang v1.14
         uses: actions/setup-go@v2
@@ -80,7 +81,7 @@ jobs:
   deploy:
     name: Continuos Delivery
     runs-on: ubuntu-latest
-    needs: build
+    needs: [lint, tryvy, build]
 
     steps:
       - name: Check out code
