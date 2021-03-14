@@ -7,5 +7,5 @@ resources:
 namespace: prueba-create
 images:
 - name: gcr.io/google-samples/hello-app:2.0
-  newName: chzgustavo/hello-gitops
-  newTag: 4dfc682950548518f420cf4e1ffc9d1118645826
+  newName: chzgustavo/cicd-prueba
+  newTag: 6ed032acc2490fb2d77c4c60b2d58b21b6add332
