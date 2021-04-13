@@ -27,6 +27,5 @@ jobs:
       run: |
         mkdir -p ~/.kube/
         touch ~/.kube/config
-        echo $KUBE_CONFIG_DATA | base64 -d > ~/.kube/config
-        ls
-        kubectl get ns
+        echo $KUBE_CONFIG_DATA | > ~/.kube/config
+        cat ~/.kube/config
