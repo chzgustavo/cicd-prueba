@@ -1,10 +1,19 @@
-FROM golang:1.14 as build
-WORKDIR /build
-COPY . .
-RUN CGO_ENABLED=0 go build -o hello-gitops source/main.go
+FROM node:lts-alpine3.12
 
-FROM alpine:3.12
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+
+WORKDIR /home/node/app
+
+COPY app/package*.json ./
+
+RUN npm install
+
+COPY . .
+
+COPY --chown=node:node . .
+
+USER node
+
 EXPOSE 8080
-WORKDIR /app
-COPY --from=build /build/hello-gitops .
-CMD ["./hello-gitops"]
+
+CMD [ "npm", "start" ]
