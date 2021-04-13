@@ -103,8 +103,10 @@ jobs:
         echo "$URL"
         echo "::set-output name=url::$URL"
     - name: Add Ngrok URL comment to PR
-      uses: unsplash/comment-on-pr@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: actions/checkout@v2
+      uses: repo-sync/pull-request@v2
       with:
-        msg: "URL for environment is: ${{ steps.kubectl.outputs.url }}"
+        destination_branch: "main"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pr_title: "Pulling ${{ github.ref }} into master" # Title of pull request
+        pr_body: "URL for environment is: ${{ steps.kubectl.outputs.url }}"
