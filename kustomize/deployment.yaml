@@ -14,7 +14,7 @@ spec:
         name: prueba-gha
     spec:
       containers:
-      - name: prueba-gha
+      - name: cicd-prueba
         image: chzgustavo/cicd-prueba:22a2b6daf993a828ecafafd0c7c75de0de21290f
         ports:
         - containerPort: 8080
