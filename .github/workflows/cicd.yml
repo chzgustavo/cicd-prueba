@@ -28,3 +28,4 @@ jobs:
         mkdir -p ~/.kube/
         touch ~/.kube/config
         echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > ~/.kube/config
+        kubectl get ns
