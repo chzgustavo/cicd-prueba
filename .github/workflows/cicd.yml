@@ -27,6 +27,6 @@ jobs:
       run: |
         mkdir -p ~/.kube/
         touch ~/.kube/config
-        echo $KUBE_CONFIG_DATA | base64 -d > ~/.kube/config
-        cat ~/.kube/config
+        echo $KUBE_CONFIG_DATA 
+        
         
