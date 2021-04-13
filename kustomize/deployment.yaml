@@ -17,5 +17,5 @@ spec:
       - name: prueba-gha
         image: pablokbs/prueba-gha
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           name: http
