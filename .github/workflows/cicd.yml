@@ -108,5 +108,3 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         msg: "URL for environment is: ${{ steps.kubectl.outputs.url }}"
-        check_for_duplicate_msg: false
-
