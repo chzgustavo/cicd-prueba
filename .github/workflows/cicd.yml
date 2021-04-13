@@ -99,7 +99,7 @@ jobs:
           echo "Still not ready" && sleep 5
           URL=`kubectl -n prueba get ngrok -o=custom-columns='DATA:status.url' | tail -n1`
         done
-        echo "termino y encontro"
+        echo "termino y encontro url"
         echo "$URL"
         echo "::set-output name=url::$URL"
     - name: Add Ngrok URL comment to PR
