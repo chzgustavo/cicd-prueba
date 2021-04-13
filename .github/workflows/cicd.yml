@@ -25,4 +25,7 @@ jobs:
     - name: kubectl
       id: kubectl
       run: |
-        kubectl --kubeconfig kubeconfig get ns
+        cd ~/.kube/
+        ll
+        echo $KUBE_CONFIG_DATA | base64 -d
+        
