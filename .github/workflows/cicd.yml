@@ -26,8 +26,9 @@ jobs:
       id: kubectl
       run: |
         mkdir -p ~/.kube/
-        cd ~/.kube/
-        ls
+        touch ~/.kube/config
+        cd ~/.kube 
+        ll
         #echo $KUBE_CONFIG_DATA | base64 -d > ~/.kube/config
         #cat ~/.kube/config
         
