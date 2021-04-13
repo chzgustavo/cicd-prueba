@@ -71,4 +71,4 @@ jobs:
           context: .
           file: ./Dockerfile
           tags: |
-            chzgustavo/${{ env.IMAGE_NAME }}:${{ github.sha }}, latest
+            chzgustavo/${{ env.IMAGE_NAME }}:${{ github.sha }}
