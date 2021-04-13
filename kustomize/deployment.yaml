@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: prueba-gha
-        image: pablokbs/prueba-gha
+        image: chzgustavo/cicd-prueba:latest
         ports:
         - containerPort: 8080
           name: http
