@@ -3,7 +3,7 @@ name: CI/CD
 on:
   push:
     branches: 
-      - main
+      - dev
      
 env:
   IMAGE_NAME: ${{ github.event.repository.name }}
@@ -102,10 +102,11 @@ jobs:
         echo "termino y encontro url"
         echo "$URL"
         echo "::set-output name=url::$URL"
-    - name: Add Ngrok URL comment to PR
-      uses: unsplash/comment-on-pr@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        msg: "URL for environment is: ${{ steps.kubectl.outputs.url }}"
 
+    - name: Add Ngrok URL comment to PR
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pr_title: "Pulling ${{ github.ref }} into master" # Title of pull request
+        pr_body: "URL for environment is: ${{ steps.kubectl.outputs.url }}"
