@@ -8,7 +8,7 @@ COPY app/package*.json ./
 
 RUN npm install
 
-COPY . .
+#COPY . .
 
 COPY --chown=node:node . .
 
