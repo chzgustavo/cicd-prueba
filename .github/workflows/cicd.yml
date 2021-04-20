@@ -76,7 +76,6 @@ jobs:
     needs: [lint, tryvy, build]
     env:
       KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-      HOLA: test
     steps:
     - uses: actions/checkout@master
     - name: deploy to cluster
@@ -108,5 +107,5 @@ jobs:
       with:
         destination_branch: "main"
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        pr_title: "Pulling ${{ github.ref }} into master" # Title of pull request
+        pr_title: "Pulling ${{ github.ref }} into master" # title of pull request
         pr_body: "URL for environment is: ${{ steps.kubectl.outputs.url }}"
