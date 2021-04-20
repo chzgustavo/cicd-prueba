@@ -12,7 +12,7 @@ RUN npm install
 
 COPY --chown=node:node . .
 
-USER node
+USER root
 
 EXPOSE 8080
 
