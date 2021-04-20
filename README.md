@@ -1,4 +1,4 @@
-# cicd-prueba
+# CICD
 Pipeline CI/CD utilizando github actions y ngrok para cluster local minikube.
 
 Para instalar ngrok: https://github.com/zufardhiyaulhaq/ngrok-operator
